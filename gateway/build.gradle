@@ -27,7 +27,7 @@ plugins {
     //jhipster-needle-gradle-plugins - JHipster will add additional gradle plugins here
 }
 
-group = "com.vw.gateway"
+group = "com.okta.developer.gateway"
 version = "0.0.1-SNAPSHOT"
 
 description = ""
@@ -86,7 +86,7 @@ eclipse {
 defaultTasks "bootRun"
 
 springBoot {
-    mainClassName = "com.vw.gateway.GatewayApp"
+    mainClassName = "com.okta.developer.gateway.GatewayApp"
 }
 
 test {

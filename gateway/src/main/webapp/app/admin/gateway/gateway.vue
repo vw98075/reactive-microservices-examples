@@ -1,19 +1,19 @@
 <template>
   <div>
     <h2>
-      <span id="gateway-page-heading">Gateway</span>
+      <span id="gateway-page-heading" v-text="$t('gateway.title')">Gateway</span>
       <button class="btn btn-primary float-right" v-on:click="refresh()" :disabled="updatingRoutes">
-        <font-awesome-icon icon="sync"></font-awesome-icon> <span>Refresh</span>
+        <font-awesome-icon icon="sync"></font-awesome-icon> <span v-text="$t('gateway.refresh.button')">Refresh</span>
       </button>
     </h2>
-    <h3>Current routes</h3>
+    <h3 v-text="$t('gateway.routes.title')">Current routes</h3>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>URL</th>
-            <th>Service</th>
-            <th>Available servers</th>
+            <th v-text="$t('gateway.routes.url')">URL</th>
+            <th v-text="$t('gateway.routes.service')">Service</th>
+            <th v-text="$t('gateway.routes.servers')">Available servers</th>
           </tr>
         </thead>
         <tbody>
@@ -21,7 +21,9 @@
             <td>{{ route.path }}</td>
             <td>{{ route.serviceId }}</td>
             <td>
-              <div v-if="route.serviceInstances.length === 0" class="label label-danger">Warning: no server available!</div>
+              <div v-if="route.serviceInstances.length === 0" class="label label-danger" v-text="$t('gateway.routes.error')">
+                Warning: no server available!
+              </div>
               <div class="table-responsive">
                 <table class="table table-striped" v-if="route">
                   <tr v-for="instance of route.serviceInstances" :key="instance.uri">

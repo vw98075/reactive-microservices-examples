@@ -17,7 +17,8 @@ logging:
   level:
     ROOT: INFO
     tech.jhipster: INFO
-    com.vw.blog: INFO
+    com.okta.developer.blog: INFO
+    org.neo4j.driver: WARN
 
 eureka:
   instance:
@@ -26,6 +27,20 @@ eureka:
     service-url:
       defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
 
+org:
+  neo4j:
+    driver:
+      pool:
+        metrics-enabled: true
+      uri: bolt://localhost:7687
+      # Uncomment to use an authenticated connection
+      # authentication:
+      #   username: neo4j
+      #   password: secret
+    migrations:
+      locations-to-scan:
+      packages-to-scan: com.okta.developer.blog.config.neo4j
+      installed-by: blog
 management:
   metrics:
     export:
@@ -38,18 +53,10 @@ spring:
       enabled: false
     livereload:
       enabled: false
-  # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
-  liquibase:
-    contexts: prod
-    url: jdbc:postgresql://localhost:5432/blog
   mail:
     host: localhost
     port: 25
     username:
-    password:
-  r2dbc:
-    url: r2dbc:postgresql://localhost:5432/blog
-    username: blog
     password:
   thymeleaf:
     cache: true

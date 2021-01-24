@@ -19,12 +19,17 @@ import LoginService from './account/login.service';
 import AccountService from './account/account.service';
 
 import '../content/scss/vendor.scss';
+import TranslationService from '@/locale/translation.service';
 
 import GatewayService from '@/admin/gateway/gateway.service';
 
 import UserOAuth2Service from '@/entities/user/user.oauth2.service';
 /* tslint:disable */
 
+import PostService from '@/entities/blog/post/post.service';
+import TagService from '@/entities/blog/tag/tag.service';
+import ProductService from '@/entities/store/product/product.service';
+import BlogService from '@/entities/blog/blog/blog.service';
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
 
 /* tslint:enable */
@@ -38,10 +43,12 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('jhi-item-count', JhiItemCountComponent);
 Vue.component('jhi-sort-indicator', JhiSortIndicatorComponent);
 Vue.component('infinite-loading', InfiniteLoading);
+const i18n = config.initI18N(Vue);
 const store = config.initVueXStore(Vue);
 
+const translationService = new TranslationService(store, i18n);
 const loginService = new LoginService();
-const accountService = new AccountService(store, (<any>Vue).cookie, router);
+const accountService = new AccountService(store, translationService, (<any>Vue).cookie, router);
 
 router.beforeEach((to, from, next) => {
   if (!to.matched.length) {
@@ -79,8 +86,14 @@ new Vue({
     metricsService: () => new MetricsService(),
 
     userOAuth2Service: () => new UserOAuth2Service(),
+    translationService: () => translationService,
+    postService: () => new PostService(),
+    tagService: () => new TagService(),
+    productService: () => new ProductService(),
+    blogService: () => new BlogService(),
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
   },
+  i18n,
   store,
 });

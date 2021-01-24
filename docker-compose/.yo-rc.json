@@ -1,0 +1,14 @@
+{
+  "generator-jhipster": {
+    "deploymentType": "docker-compose",
+    "gatewayType": "zuul",
+    "monitoring": "no",
+    "directoryPath": "../",
+    "appsFolders": ["gateway", "blog", "store"],
+    "clusteredDbApps": [],
+    "serviceDiscoveryType": "eureka",
+    "dockerRepositoryName": "mraible",
+    "dockerPushCommand": "docker push",
+    "jwtSecretKey": "NDNiNTFlYjQxYTMwMzExYjI2MTJlOTY4YmI4NzdlNzAyNjUyYTYyMTQ3MTRjZDZjOGM5NDljNzdhNjAwNWE3ODdmOTViZWUzNDJiNzdlNWFlMGI0NDU3ZTU0MjQ1MmQ2NWVlMA=="
+  }
+}

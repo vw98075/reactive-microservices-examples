@@ -1,7 +1,7 @@
 apply plugin: "war"
 
 bootWar {
-    mainClassName = "com.vw.blog.BlogApp"
+    mainClassName = "com.okta.developer.blog.BlogApp"
     includes = ["WEB-INF/**", "META-INF/**"]
 }
 

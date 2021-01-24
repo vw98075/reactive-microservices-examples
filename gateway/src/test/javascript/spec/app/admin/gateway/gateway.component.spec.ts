@@ -9,6 +9,7 @@ import GatewayService from '@/admin/gateway/gateway.service';
 const localVue = createLocalVue();
 
 config.initVueApp(localVue);
+const i18n = config.initI18N(localVue);
 const store = config.initVueXStore(localVue);
 localVue.component('font-awesome-icon', FontAwesomeIcon);
 
@@ -17,7 +18,12 @@ describe('Gateway Component', () => {
   let comp: GatewayClass;
 
   beforeEach(() => {
-    wrapper = shallowMount<GatewayClass>(GatewayComponent, { store, localVue, provide: { gatewayService: () => new GatewayService() } });
+    wrapper = shallowMount<GatewayClass>(GatewayComponent, {
+      store,
+      i18n,
+      localVue,
+      provide: { gatewayService: () => new GatewayService() },
+    });
     comp = wrapper.vm;
   });
 
